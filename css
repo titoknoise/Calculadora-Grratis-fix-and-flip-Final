@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jose Bernard Investor Fix & Flip Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jose Bernard Investor Fix & Flip Calculator</h1>
+    <form>
+      <label>Select your language / Seleccione su idioma:</label>
+      <select>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+
+      <label>Home Price ($):</label>
+      <input type="number" placeholder="Enter home price">
+
+      <label>Down Payment Percentage (%):</label>
+      <input type="number" placeholder="Enter down payment percentage">
+
+      <label>Does the Loan Include Renovation Costs?:</label>
+      <select>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Interest Rate (%):</label>
+      <input type="number" placeholder="Enter interest rate">
+
+      <label>Holding Period (Months):</label>
+      <input type="number" placeholder="Enter holding period">
+
+      <label>Renovation Cost ($):</label>
+      <input type="number" placeholder="Enter renovation cost">
+
+      <label>Purchase Closing Cost Percentage (%):</label>
+      <input type="number" placeholder="Enter closing cost percentage">
+
+      <label>Yearly Property Taxes ($):</label>
+      <input type="number" placeholder="Enter yearly property taxes">
+
+      <label>Yearly Insurance ($):</label>
+      <input type="number" placeholder="Enter yearly insurance">
+
+      <label>Estimated Monthly Utilities ($):</label>
+      <input type="number" placeholder="Enter monthly utilities">
+
+      <label>After Repair Value (ARV) ($):</label>
+      <input type="number" placeholder="Enter ARV">
+
+      <label>Selling Cost (%):</label>
+      <input type="number" placeholder="Enter selling cost percentage">
+
+      <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+    <p class="disclaimer">
+      Disclaimer: This calculator provides estimates only. Perform additional analysis and due diligence before making any investment decisions.
+    </p>
+  </div>
+
+  <script>
+    function calculate() {
+      alert("Calculation logic will go here!");
+    }
+  </script>
+</body>
+</html>
