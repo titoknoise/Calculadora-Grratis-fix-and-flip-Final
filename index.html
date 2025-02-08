@@ -1,127 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jose Bernard Investor Fix & Flip Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 500px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="number"], select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .disclaimer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #666;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Bernard Investor Fix & Flip Calculator</title>
+    <style>
+        @import url('https://www.fontspace.com/a-big-deal-font-f51277');
+        @import url('https://www.fontspace.com/agoestoesan-font-f14421');
+        @import url('https://www.fontspace.com/aaargh-font-f11328');
+        @import url('https://www.fontspace.com/amccd-font-f25168');
+
+        body {
+            font-family: 'Aaargh Normal', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #FFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            font-family: 'A BIG DEAL', sans-serif;
+            color: #10ABFF;
+        }
+        .language-selection {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .language-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #88D593;
+            color: white;
+        }
+        .language-button:hover {
+            background-color: #6BAA73;
+        }
+        form {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-family: 'Agoestoesan Normal', sans-serif;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            font-family: 'AMCCD', sans-serif;
+            background-color: #FFFF26;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #F0E926;
+        }
+        .result, .scenarios {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #F9F9F9;
+            border-left: 5px solid #084B6F;
+            border-radius: 5px;
+        }
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Jose Bernard Investor Fix & Flip Calculator</h1>
-    <form>
-      <label>Select your language / Seleccione su idioma:</label>
-      <select>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
+    <div class="container">
+        <h1 class="header">Jose Bernard Investor Fix & Flip Calculator</h1>
+        <div class="language-selection">
+            <p>Select your language / Seleccione su idioma:</p>
+            <button class="language-button" onclick="setLanguage('en')">English</button>
+            <button class="language-button" onclick="setLanguage('es')">Español</button>
+        </div>
+        <form id="calculator-form">
+            <div>
+                <label id="label-home-price" for="home-price">Home Price ($):</label>
+                <input type="number" id="home-price" placeholder="E.g., 150000" required>
+            </div>
+            <div>
+                <label id="label-down-payment-percentage" for="down-payment-percentage">Down Payment Percentage (%):</label>
+                <input type="number" id="down-payment-percentage" placeholder="E.g., 20" required>
+            </div>
+            <div>
+                <label id="label-loan-includes-renovation" for="loan-includes-renovation">Does the Loan Include Renovation Costs?:</label>
+                <select id="loan-includes-renovation" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div>
+                <label id="label-loan-interest" for="loan-interest">Interest Rate (%):</label>
+                <input type="number" id="loan-interest" placeholder="E.g., 5" required>
+            </div>
+            <div>
+                <label id="label-holding-period" for="holding-period">Holding Period (Months):</label>
+                <input type="number" id="holding-period" placeholder="E.g., 6" required>
+            </div>
+            <div>
+                <label id="label-renovation-cost" for="renovation-cost">Renovation Cost ($):</label>
+                <input type="number" id="renovation-cost" placeholder="E.g., 50000" required>
+            </div>
+            <div>
+                <label id="label-purchase-closing-cost" for="purchase-closing-cost">Purchase Closing Cost Percentage (%):</label>
+                <input type="number" id="purchase-closing-cost" placeholder="E.g., 3" required>
+            </div>
+            <div>
+                <label id="label-property-taxes" for="property-taxes">Yearly Property Taxes ($):</label>
+                <input type="number" id="property-taxes" placeholder="E.g., 3000" required>
+            </div>
+            <div>
+                <label id="label-insurance" for="insurance">Yearly Insurance ($):</label>
+                <input type="number" id="insurance" placeholder="E.g., 1200" required>
+            </div>
+            <div>
+                <label id="label-utilities" for="utilities">Estimated Monthly Utilities ($):</label>
+                <input type="number" id="utilities" placeholder="E.g., 200" required>
+            </div>
+            <div>
+                <label id="label-after-repair-value" for="after-repair-value">After Repair Value (ARV) ($):</label>
+                <input type="number" id="after-repair-value" placeholder="E.g., 250000" required>
+            </div>
+            <div>
+                <label id="label-selling-cost" for="selling-cost">Selling Cost (%):</label>
+                <input type="number" id="selling-cost" placeholder="E.g., 6" required>
+            </div>
+            <button type="button" onclick="calculate()">Calculate</button>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+        <div id="scenarios" class="scenarios" style="display: none;"></div>
+        <p class="disclaimer">Disclaimer: This calculator provides estimates only. Perform additional analysis and due diligence before making any investment decisions.</p>
+    </div>
 
-      <label>Home Price ($):</label>
-      <input type="number" placeholder="Enter home price">
+    <script>
+        let language = 'en';
 
-      <label>Down Payment Percentage (%):</label>
-      <input type="number" placeholder="Enter down payment percentage">
+        function setLanguage(selectedLanguage) {
+            language = selectedLanguage;
+            document.querySelector('.language-selection').style.display = 'none';
+            document.getElementById('calculator-form').style.display = 'flex';
 
-      <label>Does the Loan Include Renovation Costs?:</label>
-      <select>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
+            if (language === 'es') {
+                document.getElementById('label-home-price').innerText = 'Precio de la Casa ($):';
+                document.getElementById('label-down-payment-percentage').innerText = 'Porcentaje de Pago Inicial (%):';
+                document.getElementById('label-loan-includes-renovation').innerText = '¿El préstamo incluye costos de renovación?';
+                document.getElementById('label-loan-interest').innerText = 'Tasa de Interés (%):';
+                document.getElementById('label-holding-period').innerText = 'Período de Retención (Meses):';
+                document.getElementById('label-renovation-cost').innerText = 'Costo de Renovación ($):';
+                document.getElementById('label-purchase-closing-cost').innerText = 'Porcentaje de Costos de Cierre de Compra (%):';
+                document.getElementById('label-property-taxes').innerText = 'Impuestos Anuales de Propiedad ($):';
+                document.getElementById('label-insurance').innerText = 'Seguro Anual ($):';
+                document.getElementById('label-utilities').innerText = 'Servicios Públicos Mensuales Estimados ($):';
+                document.getElementById('label-after-repair-value').innerText = 'Valor Después de Reparar (ARV) ($):';
+                document.getElementById('label-selling-cost').innerText = 'Costo de Venta (%):';
+            }
+        }
 
-      <label>Interest Rate (%):</label>
-      <input type="number" placeholder="Enter interest rate">
+        function calculate() {
+            const homePrice = parseFloat(document.getElementById('home-price').value);
+            const downPaymentPercentage = parseFloat(document.getElementById('down-payment-percentage').value) / 100;
+            const loanIncludesRenovation = document.getElementById('loan-includes-renovation').value === 'yes';
+            const renovationCost = parseFloat(document.getElementById('renovation-cost').value);
+            const loanInterestRate = parseFloat(document.getElementById('loan-interest').value);
+            const holdingPeriod = parseFloat(document.getElementById('holding-period').value);
+            const purchaseClosingCostPercentage = parseFloat(document.getElementById('purchase-closing-cost').value) / 100;
+            const propertyTaxes = parseFloat(document.getElementById('property-taxes').value) / 12;
+            const insurance = parseFloat(document.getElementById('insurance').value) / 12;
+            const utilities = parseFloat(document.getElementById('utilities').value);
+            const afterRepairValue = parseFloat(document.getElementById('after-repair-value').value);
+            const sellingCostPercent = parseFloat(document.getElementById('selling-cost').value);
 
-      <label>Holding Period (Months):</label>
-      <input type="number" placeholder="Enter holding period">
+            const loanAmount = loanIncludesRenovation ? (homePrice + renovationCost) : homePrice;
+            const downPayment = loanAmount * downPaymentPercentage;
+            const monthlyInterest = (loanAmount * (loanInterestRate / 100)) / 12;
+            const totalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
+            const totalHoldingCost = totalMonthlyCost * holdingPeriod;
+            const purchaseClosingCost = loanIncludesRenovation ? (loanAmount * purchaseClosingCostPercentage) : (homePrice * purchaseClosingCostPercentage);
 
-      <label>Renovation Cost ($):</label>
-      <input type="number" placeholder="Enter renovation cost">
+            const totalCashNeeded = loanIncludesRenovation
+                ? (downPayment + purchaseClosingCost + (propertyTaxes + insurance) * holdingPeriod)
+                : (homePrice + purchaseClosingCost + (propertyTaxes + insurance) * holdingPeriod);
 
-      <label>Purchase Closing Cost Percentage (%):</label>
-      <input type="number" placeholder="Enter closing cost percentage">
+            const baseSellingCost = (afterRepairValue * sellingCostPercent) / 100;
+            const baseProfit = afterRepairValue - (homePrice + totalHoldingCost + baseSellingCost);
+            const baseROI = (baseProfit / (homePrice + totalHoldingCost)) * 100;
 
-      <label>Yearly Property Taxes ($):</label>
-      <input type="number" placeholder="Enter yearly property taxes">
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `<h3>Base Results:</h3>
+                <p>Down Payment: $${downPayment.toFixed(2)}</p>
+                <p>Monthly Loan Interest Only: $${monthlyInterest.toFixed(2)}</p>
+                <p>Total Monthly Holding Cost: $${totalMonthlyCost.toFixed(2)}</p>
+                <p>Total Purchasing Closing Cost: $${purchaseClosingCost.toFixed(2)}</p>
+                <p>Total Cash Needed: $${totalCashNeeded.toFixed(2)}</p>`;
 
-      <label>Yearly Insurance ($):</label>
-      <input type="number" placeholder="Enter yearly insurance">
+            // Scenario 1: Base Scenario
+            const scenario1SellingCost = baseSellingCost;
+            const scenario1Profit = baseProfit;
+            const scenario1ROI = baseROI;
 
-      <label>Estimated Monthly Utilities ($):</label>
-      <input type="number" placeholder="Enter monthly utilities">
+            // Scenario 2: +10% Renovation Cost, -10% ARV, +2 Months
+            const scenario2ARV = afterRepairValue * 0.9;
+            const scenario2RenovationCost = renovationCost * 1.1;
+            const scenario2HoldingPeriod = holdingPeriod + 2;
+            const scenario2TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
+            const scenario2TotalHoldingCost = scenario2TotalMonthlyCost * scenario2HoldingPeriod;
+            const scenario2SellingCost = (scenario2ARV * sellingCostPercent) / 100;
+            const scenario2Profit = scenario2ARV - (homePrice + scenario2TotalHoldingCost + scenario2SellingCost);
+            const scenario2ROI = (scenario2Profit / (homePrice + scenario2TotalHoldingCost)) * 100;
 
-      <label>After Repair Value (ARV) ($):</label>
-      <input type="number" placeholder="Enter ARV">
+            // Scenario 3: +20% Renovation Cost, -20% ARV, +4 Months
+            const scenario3ARV = afterRepairValue * 0.8;
+            const scenario3RenovationCost = renovationCost * 1.2;
+            const scenario3HoldingPeriod = holdingPeriod + 4;
+            const scenario3TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
+            const scenario3TotalHoldingCost = scenario3TotalMonthlyCost * scenario3HoldingPeriod;
+            const scenario3SellingCost = (scenario3ARV * sellingCostPercent) / 100;
+            const scenario3Profit = scenario3ARV - (homePrice + scenario3TotalHoldingCost + scenario3SellingCost);
+            const scenario3ROI = (scenario3Profit / (homePrice + scenario3TotalHoldingCost)) * 100;
 
-      <label>Selling Cost (%):</label>
-      <input type="number" placeholder="Enter selling cost percentage">
-
-      <button type="button" onclick="calculate()">Calculate</button>
-    </form>
-    <p class="disclaimer">
-      Disclaimer: This calculator provides estimates only. Perform additional analysis and due diligence before making any investment decisions.
-    </p>
-  </div>
-
-  <script>
-    function calculate() {
-      alert("Calculation logic will go here!");
-    }
-  </script>
+            document.getElementById('scenarios').style.display = 'block';
+            document.getElementById('scenarios').innerHTML = `<h3>Scenarios:</h3>
+                <p><strong>Scenario 1 (Base Scenario):</strong></p>
+                <p>Total Holding Cost: $${totalHoldingCost.toFixed(2)}</p>
+                <p>Profit: $${scenario1Profit.toFixed(2)}</p>
+                <p>ROI: ${scenario1ROI.toFixed(2)}%</p>
+                <p><strong>Scenario 2 (Renovation +10%, ARV -10%, Holding +2 months):</strong></p>
+                <p>Total Holding Cost: $${scenario2TotalHoldingCost.toFixed(2)}</p>
+                <p>Profit: $${scenario2Profit.toFixed(2)}</p>
+                <p>ROI: ${scenario2ROI.toFixed(2)}%</p>
+                <p><strong>Scenario 3 (Renovation +20%, ARV -20%, Holding +4 months):</strong></p>
+                <p>Total Holding Cost: $${scenario3TotalHoldingCost.toFixed(2)}</p>
+                <p>Profit: $${scenario3Profit.toFixed(2)}</p>
+                <p>ROI: ${scenario3ROI.toFixed(2)}%</p>`;
+        }
+    </script>
 </body>
 </html>
-
-
