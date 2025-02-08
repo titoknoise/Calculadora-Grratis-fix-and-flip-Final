@@ -27,12 +27,6 @@
       text-align: center;
       color: #333;
     }
-    /* Add styling for the logo */
-    .logo {
-      display: block;
-      margin: 0 auto 20px auto; /* Centers the logo and adds space below it */
-      max-width: 150px; /* Adjust the size of the logo */
-    }
     label {
       display: block;
       margin-top: 10px;
@@ -68,9 +62,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Add the logo here -->
-    <img src="https://raw.githubusercontent.com/titoknoise/Calculadora-Grratis-fix-and-flip-Final/refs/heads/main/logo.png" alt="Logo" class="logo">
-
     <h1>Jose Bernard Investor Fix & Flip Calculator</h1>
     <form>
       <label>Select your language / Seleccione su idioma:</label>
@@ -78,39 +69,53 @@
         <option value="en">English</option>
         <option value="es">Español</option>
       </select>
+
       <label>Home Price ($):</label>
       <input type="number" placeholder="Enter home price">
+
       <label>Down Payment Percentage (%):</label>
       <input type="number" placeholder="Enter down payment percentage">
+
       <label>Does the Loan Include Renovation Costs?:</label>
       <select>
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
+
       <label>Interest Rate (%):</label>
       <input type="number" placeholder="Enter interest rate">
+
       <label>Holding Period (Months):</label>
       <input type="number" placeholder="Enter holding period">
+
       <label>Renovation Cost ($):</label>
       <input type="number" placeholder="Enter renovation cost">
+
       <label>Purchase Closing Cost Percentage (%):</label>
       <input type="number" placeholder="Enter closing cost percentage">
+
       <label>Yearly Property Taxes ($):</label>
       <input type="number" placeholder="Enter yearly property taxes">
+
       <label>Yearly Insurance ($):</label>
       <input type="number" placeholder="Enter yearly insurance">
+
       <label>Estimated Monthly Utilities ($):</label>
       <input type="number" placeholder="Enter monthly utilities">
+
       <label>After Repair Value (ARV) ($):</label>
       <input type="number" placeholder="Enter ARV">
+
       <label>Selling Cost (%):</label>
       <input type="number" placeholder="Enter selling cost percentage">
+
       <button type="button" onclick="calculate()">Calculate</button>
     </form>
     <p class="disclaimer">
       Disclaimer: This calculator provides estimates only. Perform additional analysis and due diligence before making any investment decisions.
     </p>
   </div>
+
   <script>
     function calculate() {
       alert("Calculation logic will go here!");
@@ -118,3 +123,5 @@
   </script>
 </body>
 </html>
+
+
